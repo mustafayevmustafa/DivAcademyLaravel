@@ -1,0 +1,12 @@
+@extends('layouts.frontend.master')
+@section('content')
+@include('frontend.pages.home.banner')
+@include('frontend.pages.home.about')
+@include('frontend.pages.home.services')
+@include('frontend.pages.home.chart')
+@include('frontend.pages.home.our_goal')
+@include('frontend.pages.home.gallery')
+@include('frontend.pages.home.video')
+@include('frontend.pages.home.team')
+@include('frontend.pages.home.blog')
+@endsection
