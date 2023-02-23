@@ -4,16 +4,20 @@
         <!-- Content Header (Page header) -->
         <div class="row m-1">
             <div class="col-12">
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success pb-0">
+                        <p>{{ $message }}</p>
+                    </div>
+                @endif
+                @if ($message = Session::get('error'))
+                    <div class="alert alert-danger pb-0">
+                        <p>{{ $message }}</p>
+                    </div>
+                @endif
                 <div class="card">
                     <div class="card-header">
 
                         <a href="{{route('blog.index')}}" class="btn btn-success btn-sm mb-3">Blogs list</a>
-
-                        @if ($message = Session::get('success'))
-                            <div class="alert alert-success pb-0">
-                                <p>{{ $message }}</p>
-                            </div>
-                        @endif
 
                         <form action="{{route('blog.store')}}" method="post" enctype="multipart/form-data">
                             @csrf

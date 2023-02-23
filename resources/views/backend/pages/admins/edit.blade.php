@@ -20,7 +20,7 @@
                             @method('PUT')
                             @csrf
 
-                            Ad<br>
+                            Name<br>
                             <input type="text" name="name" value="{{$admin->name}}" class="form-control mb-2">
                             @error('name')
                             <p class="text-danger mb-1">{{ $message }}</p>

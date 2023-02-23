@@ -31,6 +31,7 @@ class Team extends Model
         'about',
         'image',
         'status',
+        'pdf_file',
     ];
 
     /**
@@ -39,6 +40,6 @@ class Team extends Model
      * @var array<int, string>
      */
     protected $hidden = [
-        'remember_token',
+
     ];
 }

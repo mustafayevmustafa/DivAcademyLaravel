@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BlogCreateRequest;
 use App\Http\Requests\BlogUpdateRequest;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 use App\Models\Blog;
 
 class BlogController extends Controller
@@ -17,7 +18,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::paginate(10);
+        $blogs = Blog::orderBy('created_at', 'DESC')->paginate(10);
 
         return view('backend.pages.blogs.index', compact('blogs'));
     }
@@ -41,6 +42,14 @@ class BlogController extends Controller
     public function store(BlogCreateRequest $request)
     {
         $validated = $request->validated();
+
+        $slug = Str::slug($validated['slug']);
+        $has = Blog::where('slug', $slug)->count();
+        if ($has!=0) {
+            return redirect()->back()->with('error', "slug is available");
+        }
+
+        $validated['slug'] = $slug;
 
         if ($request->hasFile('image')) {
             $imageName = rand(1, 1000) . time() . $request->image->getClientOriginalName();
@@ -86,6 +95,13 @@ class BlogController extends Controller
     {
         $blog = Blog::find($id);
         $validated = $request->validated();
+        $slug = Str::slug($validated['slug']);
+        $has = Blog::whereNotIn('id',[$id])->where('slug', $slug)->count();
+        if ($has!=0) {
+            return redirect()->back()->with('error', "slug is available");
+        }
+
+        $validated['slug'] = $slug;
 
         if ($request->hasFile('image')) {
             $imageName = rand(1, 1000) . time() . $request->image->getClientOriginalName();

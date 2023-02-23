@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ServiceUpdateRequest extends FormRequest
 {
@@ -23,14 +24,17 @@ class ServiceUpdateRequest extends FormRequest
      */
     public function rules()
     {
+        $id = $this->route('service');
+
         return [
-            'status'=>'required|in:"0", "1"',
-            'title'=>'required|string|max:255',
-            'description'=>'required|string',
-            'content'=>'required|string',
-            'image'=>'nullable|image',
-            'logo'=>'nullable|image',
-            'pdf_file'=>'nullable|mimes:pdf',
+            'slug'=>['required','string','max:255',Rule::unique("teams", "slug")->ignore($id)],
+            'status'=>['required','in:"0", "1"'],
+            'title'=>['required','string','max:255'],
+            'description'=>['required','string','max:500'],
+            'content'=>['required','string'],
+            'image'=>['nullable','image'],
+            'logo'=>['nullable','image'],
+            'pdf_file'=>['nullable','mimes:pdf'],
         ];
     }
 }

@@ -17,7 +17,7 @@ class SliderController extends Controller
      */
     public function index()
     {
-        $sliders = Slider::paginate(10);
+        $sliders = Slider::orderBy('created_at', 'DESC')->paginate(10);
 
         return view('backend.pages.sliders.index', compact('sliders'));
     }

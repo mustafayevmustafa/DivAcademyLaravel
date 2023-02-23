@@ -49,7 +49,7 @@ Main Color : #f71735
     18. Concat Area
     19. Error 404
     20. Footer
-    21. PHP Contact Form
+    21. PHP Comment Form
     22. Others
 
 */
@@ -4307,7 +4307,7 @@ body,
 }
 
 /* ==============================================================
-     # Contact
+     # Comment
 =================================================================== */
 
 .contact-area {
@@ -4432,7 +4432,7 @@ form img.loader {
 }
 
 
-/* Contact List */
+/* Comment List */
 .contact-list-area .item {
   padding: 80px 0;
 }

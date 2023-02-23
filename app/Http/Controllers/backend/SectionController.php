@@ -15,7 +15,7 @@ class SectionController extends Controller
      */
     public function index()
     {
-       $sections =  Section::paginate(10);
+       $sections =  Section::orderBy('created_at', 'DESC')->paginate(10);
 
         return view('backend.pages.sections.index', compact('sections'));
     }

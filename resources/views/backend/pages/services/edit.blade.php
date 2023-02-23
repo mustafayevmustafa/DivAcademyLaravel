@@ -4,6 +4,11 @@
         <!-- Content Header (Page header) -->
         <div class="row m-1">
             <div class="col-12">
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success pb-0">
+                        <p>{{ $message }}</p>
+                    </div>
+                @endif
                 <div class="card">
                     <div class="card-header">
 
@@ -11,11 +16,6 @@
                         <a href="{{route('service.index')}}" class="btn btn-success btn-sm">services list</a>
                         <a href="{{route('service.create')}}" class="btn btn-primary btn-sm">+ Add service</a>
                         </div>
-                        @if ($message = Session::get('success'))
-                            <div class="alert alert-success pb-0">
-                                <p>{{ $message }}</p>
-                            </div>
-                        @endif
 
                         <form action="{{route('service.update',$service->id)}}" method="POST" enctype="multipart/form-data">
                             @method('PUT')
@@ -81,6 +81,11 @@
                                 <option value="1" {{($service->status==1) ? 'selected' : ''}}>Active</option>
                             </select>
                             @error('status')
+                            <p class="text-danger mb-1">{{ $message }}</p>
+                            @enderror
+                            Slug<br>
+                            <input type="text" name="slug" value="{{$service->slug}}" class="form-control mb-2">
+                            @error('slug')
                             <p class="text-danger mb-1">{{ $message }}</p>
                             @enderror
                             <button type="submit" class="btn btn-warning mt-3">Edit</button>

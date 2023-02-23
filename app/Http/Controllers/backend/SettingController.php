@@ -5,6 +5,8 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SettingCreateRequest;
 use App\Http\Requests\SettingUpdateRequest;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use App\Models\Setting;
 
@@ -17,7 +19,7 @@ class SettingController extends Controller
      */
     public function index()
     {
-        $settings = Setting::paginate(10);
+        $settings = Setting::orderBy('created_at', 'DESC')->paginate(10);
 
         return view('backend.pages.settings.index', compact('settings'));
     }
@@ -49,6 +51,10 @@ class SettingController extends Controller
         }
 
         Setting::create($validated);
+
+        Cache::flush();
+        hascache('settings');
+
         return redirect()->back()->with('success', 'Created successfully.');
     }
 
@@ -100,6 +106,9 @@ class SettingController extends Controller
 
         $setting->update($validated);
 
+        Cache::flush();
+        hascache('settings');
+
         return redirect()->back()->with('success', 'Edited Successfully');
     }
 
@@ -117,6 +126,9 @@ class SettingController extends Controller
         if (File::exists(public_path('uploads/settings/' . $old_img))) {
             File::delete(public_path('uploads/settings/' . $old_img));
         }
+
+        Cache::flush();
+        hascache('settings');
 
         return redirect()->route('setting.index')->with('success', 'Success');
     }

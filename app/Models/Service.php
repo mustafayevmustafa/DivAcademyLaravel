@@ -17,6 +17,7 @@ class Service extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'slug',
         'title',
         'description',
         'content',
@@ -32,6 +33,6 @@ class Service extends Model
      * @var array<int, string>
      */
     protected $hidden = [
-        'remember_token',
+
     ];
 }

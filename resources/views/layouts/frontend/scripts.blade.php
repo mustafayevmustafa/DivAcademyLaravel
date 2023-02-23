@@ -1,8 +1,8 @@
-@extends('frontend.layouts.master')
-@push('scripts')
 
 <!-- jQuery Frameworks
     ============================================= -->
+
+
 <script src="{{asset('assets/frontend/js/jquery-1.12.4.min.js')}}"></script>
 <script src="{{asset('assets/frontend/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('assets/frontend/js/equal-height.min.js')}}"></script>
@@ -16,8 +16,6 @@
 <script src="{{asset('assets/frontend/js/imagesloaded.pkgd.min.js')}}"></script>
 <script src="{{asset('assets/frontend/js/count-to.js')}}"></script>
 <script src="{{asset('assets/frontend/js/jquery.nice-select.min.js')}}"></script>
-<script src="{{asset('assets/frontend/js/Chart.min.js')}}"></script>
-<script src="{{asset('assets/frontend/js/custom-chart.js')}}"></script>
+
 <script src="{{asset('assets/frontend/js/bootsnav.js')}}"></script>
 <script src="{{asset('assets/frontend/js/main.js')}}"></script>
-@endpush

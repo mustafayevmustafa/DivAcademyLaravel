@@ -4,20 +4,24 @@
         <!-- Content Header (Page header) -->
         <div class="row m-1">
             <div class="col-12">
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success pb-0">
+                        <p>{{ $message }}</p>
+                    </div>
+                @endif
                 <div class="card">
                     <div class="card-header">
 
                         <a href="{{route('service.index')}}" class="btn btn-success btn-sm mb-3">Services list</a>
 
-                        @if ($message = Session::get('success'))
-                            <div class="alert alert-success pb-0">
-                                <p>{{ $message }}</p>
-                            </div>
-                        @endif
-
                         <form action="{{route('service.store')}}" method="post" enctype="multipart/form-data">
                             @csrf
 
+                            Slug<br>
+                            <input type="text" name="slug" class="form-control mb-2">
+                            @error('slug')
+                            <p class="text-danger mb-1">{{ $message }}</p>
+                            @enderror
                             Title<br>
                             <input type="text" name="title" class="form-control mb-2">
                             @error('title')

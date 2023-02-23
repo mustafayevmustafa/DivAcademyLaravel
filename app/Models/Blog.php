@@ -32,6 +32,6 @@ class Blog extends Model
      * @var array<int, string>
      */
     protected $hidden = [
-        'remember_token',
+
     ];
 }

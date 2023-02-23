@@ -13,19 +13,19 @@
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
                             <p>
-                                California, TX 70240
+                                {!! settings('location') ?? '' !!}
                             </p>
                         </li>
                         <li>
                             <i class="fas fa-envelope-open"></i>
                             <p>
-                                Info@gmail.com
+                                {!! settings('email') ?? '' !!}
                             </p>
                         </li>
                         <li>
                             <i class="fas fa-phone"></i>
                             <p>
-                                +123 456 7890
+                                {!! settings('phone') ?? '' !!}
                             </p>
                         </li>
                     </ul>
@@ -36,32 +36,33 @@
                     <div class="social">
                         <ul>
                             <li>
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="//{!! settings('facebook') ?? ''!!}"><i class="fab fa-facebook-f"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="//{!! settings('twitter')  ?? ''!!}"><i class="fab fa-twitter"></i></a>
+
                             </li>
                             <li>
-                                <a href="#"><i class="fab fa-pinterest"></i></a>
+                                <a href="//{!! settings('pinterest') ?? ''!!}"><i class="fab fa-pinterest"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                                <a href="//{!! settings('google+') ?? ''!!}"><i class="fab fa-google-plus-g"></i></a>
                             </li>
                         </ul>
                     </div>
-                    <div class="language-switcher">
-                        <div class="dropdown">
-                            <button class="dropdown-toggle" type="button" data-toggle="dropdown">
-                                English
-                                <span class="fas fa-angle-down"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">English</a></li>
-                                <li><a href="#">Español</a></li>
-                                <li><a href="#">Française</a></li>
-                            </ul>
-                        </div>
-                    </div>
+{{--                    <div class="language-switcher">--}}
+{{--                        <div class="dropdown">--}}
+{{--                            <button class="dropdown-toggle" type="button" data-toggle="dropdown">--}}
+{{--                                English--}}
+{{--                                <span class="fas fa-angle-down"></span>--}}
+{{--                            </button>--}}
+{{--                            <ul class="dropdown-menu">--}}
+{{--                                <li><a href="#">English</a></li>--}}
+{{--                                <li><a href="#">Español</a></li>--}}
+{{--                                <li><a href="#">Française</a></li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>
@@ -98,7 +99,7 @@
             <!-- Start Atribute Navigation -->
             <div class="attr-nav">
                 <ul>
-                    <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+{{--                    <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>--}}
                     <li class="side-menu"><a href="#"><i class="fa fa-bars"></i></a></li>
                 </ul>
             </div>
@@ -109,7 +110,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="{{route('home')}}">
                     <img src="{{asset('assets/frontend/img/logo.png')}}" class="logo" alt="Logo">
                 </a>
             </div>
@@ -122,10 +123,10 @@
                         <a href="{{route('home')}}">Home</a>
                     </li>
                     <li>
-                        <a href="{{route('front.about')}}">Pages</a>
+                        <a href="{{route('front.about')}}">About</a>
                     </li>
                     <li>
-                        <a href="{{route('front.portfolio')}}">Gallery</a>
+                        <a href="{{route('front.portfolio')}}">Portfolio</a>
                     </li>
                     <li>
                         <a href="{{route('front.service')}}">Services</a>
@@ -137,62 +138,13 @@
                         <a href="{{route('front.blogs')}}">Blog</a>
                     </li>
                     <li>
-                        <a href="{{route('front.contact')}}">contact</a>
+                        <a href="{{route('front.contact')}}">Contact</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div>
 
-        <!-- Start Side Menu -->
-        <div class="side">
-            <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-            <div class="widget">
-                <h4 class="title">About Us</h4>
-                <p>
-                    Arrived compass prepare an on as. Reasonable particular on my it in sympathize. Size now easy eat
-                    hand how. Unwilling he departure elsewhere dejection at. Heart large seems may purse means few
-                    blind.
-                </p>
-            </div>
-            <div class="widget address">
-                <h4 class="title">Office Location</h4>
-                <ul>
-                    <li>
-                        <i class="fas fa-phone"></i>
-                        +123 456 7890
-                    </li>
-                    <li>
-                        <i class="fas fa-map-marker-alt"></i>
-                        California, TX 70240
-                    </li>
-                    <li>
-                        <i class="fas fa-envelope-open"></i>
-                        info@yourdomain.com
-                    </li>
-                </ul>
-            </div>
-            <div class="widget opening-hours">
-                <h4>Opening Hours</h4>
-                <ul>
-                    <li>
-                        Mon - Fri <span>9:00 - 21:00</span>
-                    </li>
-                    <li>
-                        Saturday <span>10:00 - 16:00</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="widget social">
-                <h4 class="title">Connect With Us</h4>
-                <ul class="link">
-                    <li class="facebook"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li class="twitter"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                    <li class="pinterest"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                    <li class="dribbble"><a href="#"><i class="fab fa-dribbble"></i></a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- End Side Menu -->
+        @include('layouts.frontend.sidebar')
 
     </nav>
     <!-- End Navigation -->

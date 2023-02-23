@@ -27,7 +27,7 @@ class SliderCreateRequest extends FormRequest
             'status'=>'required|in:"0", "1"',
             'subtitle'=>'required|string|max:255',
             'title'=>'required|string|max:255',
-            'button_title'=>'nullable|string',
+            'button_title'=>'nullable|string|max:255',
             'button_url'=>'url|nullable',
             'image'=>'required|image',
         ];

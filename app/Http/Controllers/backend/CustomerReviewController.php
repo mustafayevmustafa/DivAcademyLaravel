@@ -17,7 +17,7 @@ class CustomerReviewController extends Controller
      */
     public function index()
     {
-        $reviews = CustomerReview::paginate(10);
+        $reviews = CustomerReview::orderBy('created_at', 'DESC')->paginate(10);
 
         return view('backend.pages.reviews.index', compact('reviews'));
     }

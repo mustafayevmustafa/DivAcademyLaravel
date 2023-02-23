@@ -11,12 +11,8 @@
     <div class="sidebar">
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="{{asset('assets/backend/img/user2-160x160.jpg')}}" class="img-circle elevation-2"
-                     alt="User Image">
-            </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block">{{Auth::user()->name}}</a>
             </div>
         </div>
 
@@ -40,7 +36,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('about')}}" class="nav-link">
+                    <a href="{{route('about.index')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>About us</p>
                     </a>
@@ -58,9 +54,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('contact')}}" class="nav-link">
+                    <a href="{{route('chart.create')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Contact</p>
+                        <p>Chart</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('comment.index')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Comments</p>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -78,7 +80,13 @@
                 <li class="nav-item">
                     <a href="{{route('intention.index')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Intention</p>
+                        <p>Our goal</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('offer.create')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Offer</p>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -115,12 +123,6 @@
                     <a href="{{route('team.index')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Team</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('video')}}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Video</p>
                     </a>
                 </li>
             </ul>

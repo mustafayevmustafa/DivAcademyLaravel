@@ -17,7 +17,7 @@ class IntentionController extends Controller
      */
     public function index()
     {
-        $intentions = Intention::paginate(10);
+        $intentions = Intention::orderBy('created_at', 'DESC')->paginate(10);
 
         return view('backend.pages.intentions.index', compact('intentions'));
     }

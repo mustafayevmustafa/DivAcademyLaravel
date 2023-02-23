@@ -29,6 +29,6 @@ class Section extends Model
      * @var array<int, string>
      */
     protected $hidden = [
-        'remember_token',
+
     ];
 }

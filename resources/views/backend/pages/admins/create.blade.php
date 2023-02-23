@@ -17,7 +17,7 @@
 
                         <form action="{{route('admin.store')}}" method="post">
                             @csrf
-                            Ad<br>
+                            Name<br>
                             <input type="text" name="name" class="form-control mb-2">
                             @error('name')
                             <p class="text-danger mb-1">{{ $message }}</p>

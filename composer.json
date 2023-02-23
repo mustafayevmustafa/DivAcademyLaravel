@@ -30,7 +30,8 @@
         },
         "files": [
             "app/Helpers/alert.php",
-            "app/Helpers/file_upload.php"
+            "app/Helpers/file_upload.php",
+            "app/Helpers/setting.php"
         ]
     },
     "autoload-dev": {

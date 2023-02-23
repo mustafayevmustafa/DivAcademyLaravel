@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PortfolioCreateRequest;
 use App\Http\Requests\PortfolioUpdateRequest;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
 use App\Models\Portfolio;
+use App\Models\Category;
 
 class PortfolioController extends Controller
 {
@@ -17,7 +19,12 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        $portfolios = Portfolio::paginate(10);
+//        $portfolios = DB::table('portfolios')
+//            ->leftJoin('categories', 'categories.id', '=', 'portfolios.cat_id')
+//            ->select('portfolios.*', 'categories.title as cat_title')
+//            ->paginate(10);
+
+        $portfolios = Portfolio::with('categoryPortfolio')->paginate(10);
 
         return view('backend.pages.portfolios.index', compact('portfolios'));
     }
@@ -29,7 +36,8 @@ class PortfolioController extends Controller
      */
     public function create()
     {
-        return view('backend.pages.portfolios.create');
+        $categories = Category::get();
+        return view('backend.pages.portfolios.create', compact('categories'));
     }
 
     /**
@@ -72,7 +80,8 @@ class PortfolioController extends Controller
     public function edit($id)
     {
         $portfolio = Portfolio::find($id);
-        return view('backend.pages.portfolios.edit', compact('portfolio'));
+        $categories = Category::get();
+        return view('backend.pages.portfolios.edit', compact('portfolio', 'categories'));
     }
 
     /**

@@ -44,7 +44,9 @@
 @include('layouts.frontend.header')
 @yield('content')
 @include('layouts.frontend.footer')
-@stack('scripts')
+@include('layouts.frontend.scripts')
+@yield('scripts')
+{{--@stack('scripts')--}}
 
 </body>
 </html>

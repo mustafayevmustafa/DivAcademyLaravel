@@ -7,6 +7,7 @@ use App\Http\Requests\ServiceCreateRequest;
 use App\Http\Requests\ServiceUpdateRequest;
 use Illuminate\Support\Facades\File;
 use App\Models\Service;
+use Illuminate\Support\Str;
 
 class ServiceController extends Controller
 {
@@ -17,7 +18,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::paginate(10);
+        $services = Service::orderBy('created_at', 'DESC')->paginate(10);
 
         return view('backend.pages.services.index', compact('services'));
     }
@@ -41,6 +42,14 @@ class ServiceController extends Controller
     public function store(ServiceCreateRequest $request)
     {
         $validated = $request->validated();
+        $slug = Str::slug($validated['slug']);
+        $has = Service::where('slug', $slug)->count();
+
+        if ($has!=0) {
+            return redirect()->back()->with('error', "slug is available");
+        }
+
+         $validated['slug'] = $slug;
 
         if ($request->hasFile('image')) {
             $imageName = rand(1, 1000) . time() . $request->image->getClientOriginalName();
@@ -98,6 +107,14 @@ class ServiceController extends Controller
     {
         $service = Service::find($id);
         $validated = $request->validated();
+        $slug = Str::slug($validated['slug']);
+        $has = Service::whereNotIn('id',[$id])->where('slug', $slug)->count();
+
+        if ($has!=0) {
+            return redirect()->back()->with('error', "slug is available");
+        }
+
+        $validated['slug'] = $slug;
 
         if ($request->hasFile('image')) {
             $imageName = rand(1, 1000) . time() . $request->image->getClientOriginalName();

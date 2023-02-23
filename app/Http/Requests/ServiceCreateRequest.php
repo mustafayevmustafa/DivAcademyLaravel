@@ -24,9 +24,10 @@ class ServiceCreateRequest extends FormRequest
     public function rules()
     {
         return [
+            'slug'=>'required|string|max:255|unique:teams,slug',
             'status'=>'required|in:"0", "1"',
             'title'=>'required|string|max:255',
-            'description'=>'required|string',
+            'description'=>'required|string|max:500',
             'content'=>'required|string',
             'image'=>'required|image',
             'logo'=>'required|image',

@@ -25,7 +25,7 @@ class BlogCreateRequest extends FormRequest
     {
         return [
             'status'=>'required|in:"0", "1"',
-            'slug'=>'required|string|max:255',
+            'slug'=>'required|string|max:255|unique:blogs,slug',
             'tags'=>'required|string|max:255',
             'title'=>'required|string|max:255',
             'description'=>'required|string',

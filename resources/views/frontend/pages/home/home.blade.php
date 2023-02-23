@@ -10,3 +10,6 @@
 @include('frontend.pages.home.team')
 @include('frontend.pages.home.blog')
 @endsection
+@section('scripts')
+@include('layouts.frontend.homescripts')
+@endsection

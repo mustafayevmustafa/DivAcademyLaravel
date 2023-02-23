@@ -4,17 +4,18 @@
         <div id="bootcarousel" class="carousel inc-top-heading slide carousel-fade animate_text" data-ride="carousel">
             <!-- Wrapper for slides -->
             <div class="carousel-inner carousel-zoom">
-                <div class="item active">
-                    <div class="slider-thumb bg-cover" style="background-image: url({{asset('assets/footer/img/2440x1578.png')}});"></div>
+                @foreach($sliders as $slider)
+                <div class="item {{$loop->first ? 'active' : ''}}">
+                    <div class="slider-thumb bg-cover" style="background-image: url({{asset('uploads/sliders/'.$slider->image)}});"></div>
                     <div class="box-table">
                         <div class="box-cell shadow dark">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-10 col-md-offset-1">
                                         <div class="content">
-                                            <h3 data-animation="animated slideInDown">We are Deluck</h3>
-                                            <h1 data-animation="animated slideInDown">Start with us and grow your business</h1>
-                                            <a data-animation="animated slideInUp" class="btn btn-light border btn-md" href="#">View Details</a>
+                                            <h3 data-animation="animated slideInDown">{{$slider->subtitle}}</h3>
+                                            <h1 data-animation="animated slideInDown">{{$slider->title}}</h1>
+                                            <a data-animation="animated slideInUp" class="btn btn-light border btn-md" href="{{$slider->button_url}}">{{$slider->button_title}}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -22,42 +23,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="slider-thumb bg-cover" style="background-image: url({{asset('assets/footer/img/2440x1578.png')}});"></div>
-                    <div class="box-table">
-                        <div class="box-cell shadow dark">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-10 col-md-offset-1">
-                                        <div class="content">
-                                            <h3 data-animation="animated slideInDown">Search a businessman</h3>
-                                            <h1 data-animation="animated slideInLeft">For making a Plan in Your Business</h1>
-                                            <a data-animation="animated slideInUp" class="btn btn-light border btn-md" href="#">View Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="slider-thumb bg-cover" style="background-image: url({{asset('assets/footer/img/2440x1578.png')}});"></div>
-                    <div class="box-table">
-                        <div class="box-cell shadow dark">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-10 col-md-offset-1">
-                                        <div class="content">
-                                            <h3 data-animation="animated slideInDown">Creating more value</h3>
-                                            <h1 data-animation="animated slideInRight">Find Value And Build Confidence</h1>
-                                            <a data-animation="animated slideInUp" class="btn btn-light border btn-md" href="#">View Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <!-- End Wrapper for slides -->
 

@@ -10,6 +10,11 @@ class Portfolio extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function categoryPortfolio()
+    {
+        return $this->belongsTo(Category::class, 'cat_id', 'id');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -30,6 +35,6 @@ class Portfolio extends Model
      * @var array<int, string>
      */
     protected $hidden = [
-        'remember_token',
+
     ];
 }

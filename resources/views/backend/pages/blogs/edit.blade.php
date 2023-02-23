@@ -4,6 +4,16 @@
         <!-- Content Header (Page header) -->
         <div class="row m-1">
             <div class="col-12">
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success pb-0">
+                        <p>{{ $message }}</p>
+                    </div>
+                @endif
+                @if ($message = Session::get('error'))
+                    <div class="alert alert-danger pb-0">
+                        <p>{{ $message }}</p>
+                    </div>
+                @endif
                 <div class="card">
                     <div class="card-header">
 
@@ -11,11 +21,7 @@
                         <a href="{{route('blog.index')}}" class="btn btn-success btn-sm">Blogs list</a>
                         <a href="{{route('blog.create')}}" class="btn btn-primary btn-sm">+ Add blog</a>
                         </div>
-                        @if ($message = Session::get('success'))
-                            <div class="alert alert-success pb-0">
-                                <p>{{ $message }}</p>
-                            </div>
-                        @endif
+
                         <div class="text-center mt-5">
                             @if($blog->image)
                                 <img class="border border-primary" src="{{asset('uploads/blogs/'.$blog->image)}}" alt="{{$blog->slug}}"
@@ -33,7 +39,7 @@
                             <p class="text-danger mb-1">{{ $message }}</p>
                             @enderror
                             Slug<br>
-                            <input type="text" name="slug" value="{{$blog->slsug}}" class="form-control mb-2">
+                            <input type="text" name="slug" value="{{$blog->slug}}" class="form-control mb-2">
                             @error('slug')
                             <p class="text-danger mb-1">{{ $message }}</p>
                             @enderror

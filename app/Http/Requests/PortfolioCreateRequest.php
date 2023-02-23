@@ -25,7 +25,7 @@ class PortfolioCreateRequest extends FormRequest
     {
         return [
             'status'=>'required|in:"0", "1"',
-            'cat_id'=>'required|integer',
+            'cat_id'=>'required|integer|exists:App\Models\Category,id',
             'subtitle'=>'required|string|max:255',
             'title'=>'required|string|max:255',
             'description'=>'required|string',

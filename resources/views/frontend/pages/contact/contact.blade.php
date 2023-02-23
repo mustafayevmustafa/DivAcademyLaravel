@@ -3,7 +3,8 @@
 
     <!-- Start Site Title
     ============================================= -->
-    <div class="site-title-area text-center shadow dark bg-fixed text-light" style="background-image: url({{asset('assets/img/2440x1578.png')}});">
+    <div class="site-title-area text-center shadow dark bg-fixed text-light"
+         style="background-image: url({{asset('assets/frontend/img/2440x1578.png')}});">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -30,12 +31,12 @@
     </div>
     <!-- End Breadcrumb -->
 
-    <!-- Start Contact List
+    <!-- Start Comment List
     ============================================= -->
     <div class="contact-list-area text-center">
         <div class="container">
             <div class="row">
-                <!-- Start Contact Info -->
+                <!-- Start Comment Info -->
                 <div class="contact-info">
                     <div class="col-md-4 col-sm-4 single">
                         <div class="item">
@@ -44,7 +45,7 @@
                             </div>
                             <div class="info">
                                 <h4>Call Us</h4>
-                                <span>+324 119 2343</span>
+                                <span>{!! settings('phone') !!}</span>
                             </div>
                         </div>
                     </div>
@@ -55,7 +56,7 @@
                             </div>
                             <div class="info">
                                 <h4>Address</h4>
-                                <span>+324 119 2343</span>
+                                <span>{!! settings('address') !!}</span>
                             </div>
                         </div>
                     </div>
@@ -66,18 +67,18 @@
                             </div>
                             <div class="info">
                                 <h4>Email Us</h4>
-                                <span>info@yourdomain.com</span>
+                                <span>{!! settings('email') !!}</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- End Contact Info -->
+                <!-- End Comment Info -->
             </div>
         </div>
     </div>
-    <!-- End Contact List -->
+    <!-- End Comment List -->
 
-    <!-- Start Contact
+    <!-- Start Comment
     ============================================= -->
     <div class="contact-area bg-gray default-padding">
         <div class="container">
@@ -86,35 +87,50 @@
                     <div class="info">
                         <h2>Let's lalk about your idea</h2>
                         <p>
-                            Our next drew much you with rank. Tore many held age hold rose than our. She literature sentiments any contrasted. Set aware joy sense young now tears china shy.
+                            Our next drew much you with rank. Tore many held age hold rose than our. She is literature
+                            sentiments any contrasted. Set aware joy sense young now tears china shy.
                         </p>
-                        <form action="assets/mail/contact.php" method="POST" class="contact-form">
+                        <form action="{{route('comment.store')}}" method="POST" class="contact-form">
+                            @csrf
                             <div class="col-md-12">
                                 <div class="row">
                                     <div class="form-group">
-                                        <input class="form-control" id="name" name="name" placeholder="Name" type="text">
-                                        <span class="alert-error"></span>
+                                        <input class="form-control" id="name" name="name" placeholder="Name"
+                                               type="text">
+                                        @error('name')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input class="form-control" id="email" name="email" placeholder="Email*" type="email">
-                                        <span class="alert-error"></span>
+                                        <input class="form-control" id="email" name="email" placeholder="Email*"
+                                               type="email">
+                                        @error('email')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input class="form-control" id="phone" name="phone" placeholder="Phone" type="text">
-                                        <span class="alert-error"></span>
+                                        <input class="form-control" id="phone" name="phone" placeholder="Phone"
+                                               type="tel">
+                                        @error('phone')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="row">
                                     <div class="form-group comments">
-                                        <textarea class="form-control" id="comments" name="comments" placeholder="Tell Us About Project *"></textarea>
+                                        <textarea class="form-control" id="comments" name="comment"
+                                                  placeholder="Tell Us About Project *"></textarea>
+                                        @error('comment')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -125,28 +141,19 @@
                                     </button>
                                 </div>
                             </div>
-                            <!-- Alert Message -->
-                            <div class="col-md-12 alert-notification">
-                                <div id="message" class="alert-msg"></div>
-                            </div>
                         </form>
+                        <!-- Alert Message -->
+                        <div class="col-md-12 alert-notification">
+                            <div id="message" class="alert-msg"></div>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- End Contact -->
-
-    <!-- Start Google Maps
-    ============================================= -->
-    <div class="maps-area">
-        <div class="container-full">
-            <div class="row">
-                <div class="google-maps">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14767.262289338461!2d70.79414485000001!3d22.284975!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1424308883981"></iframe>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Google Maps -->
+    <!-- End Comment -->
+@endsection
+@section('scripts')
+@include('layouts.frontend.homescripts')
 @endsection

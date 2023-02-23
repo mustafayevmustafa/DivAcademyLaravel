@@ -4,31 +4,35 @@
         <!-- Content Header (Page header) -->
         <div class="row m-1">
             <div class="col-12">
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success pb-0">
+                        <p>{{ $message }}</p>
+                    </div>
+                @endif@if ($message = Session::get('error'))
+                    <div class="alert alert-danger pb-0">
+                        <p>{{ $message }}</p>
+                    </div>
+                @endif
                 <div class="card">
                     <div class="card-header">
 
                         <a href="{{route('blog.create')}}" class="btn btn-primary btn-sm">+ Add blog</a>
 
-{{--                        <div class="card-tools">--}}
-{{--                            <div class="input-group input-group-sm" style="width: 150px;">--}}
-{{--                                <input type="text" name="table_search" class="form-control float-right"--}}
-{{--                                       placeholder="Search">--}}
+                        {{--                        <div class="card-tools">--}}
+                        {{--                            <div class="input-group input-group-sm" style="width: 150px;">--}}
+                        {{--                                <input type="text" name="table_search" class="form-control float-right"--}}
+                        {{--                                       placeholder="Search">--}}
 
-{{--                                <div class="input-group-append">--}}
-{{--                                    <button type="submit" class="btn btn-default">--}}
-{{--                                        <i class="fas fa-search"></i>--}}
-{{--                                    </button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+                        {{--                                <div class="input-group-append">--}}
+                        {{--                                    <button type="submit" class="btn btn-default">--}}
+                        {{--                                        <i class="fas fa-search"></i>--}}
+                        {{--                                    </button>--}}
+                        {{--                                </div>--}}
+                        {{--                            </div>--}}
+                        {{--                        </div>--}}
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0">
-                        @if ($message = Session::get('success'))
-                            <div class="alert alert-success pb-0">
-                                <p>{{ $message }}</p>
-                            </div>
-                        @endif
                         <table class="table table-hover text-nowrap">
                             <thead>
                             <tr>
@@ -45,7 +49,8 @@
                                     <td>{{substr($blog->description,0,100)}}...</td>
                                     <td>
                                         @if($blog->image)
-                                            <img src="{{asset('uploads/blogs/'.$blog->image)}}" alt="" width="100" height="100">
+                                            <img src="{{asset('uploads/blogs/'.$blog->image)}}" alt="" width="100"
+                                                 height="100">
                                         @endif
                                     </td>
                                     <td>

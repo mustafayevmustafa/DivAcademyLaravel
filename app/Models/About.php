@@ -17,11 +17,13 @@ class About extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'slug',
         'icon',
         'icon_title',
         'title',
         'description',
         'content',
+        'status',
     ];
 
     /**
@@ -30,6 +32,6 @@ class About extends Model
      * @var array<int, string>
      */
     protected $hidden = [
-        'remember_token',
+
     ];
 }
